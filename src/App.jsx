@@ -4,15 +4,19 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Test from './Components/Test'
 import Event from './Components/Event'
+import List from './Components/List'
+import DynamicList from './Components/DynmicList'
 
 function App() {
-  
+  const [list, setList] = useState(["Home", "profile","About", "Contact", "Service"])
 
   return (
       <div>
-        <h1>Hello</h1>
+        {/* <h1>Hello</h1> */}
         {/* <Test name='Red & White' /> */}
-        <Event />
+        {/* <Event /> */}
+        <List list={list} />
+        <DynamicList list={list} />
       </div>
       
   )
