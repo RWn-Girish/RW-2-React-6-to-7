@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -11,13 +11,13 @@ function App() {
   const [list, setList] = useState(["Home", "profile","About", "Contact", "Service"])
 
   return (
-      <div>
+      <React.Fragment>
         {/* <h1>Hello</h1> */}
         {/* <Test name='Red & White' /> */}
         {/* <Event /> */}
-        <List list={list} />
+        {/* <List list={list} /> */}
         <DynamicList list={list} />
-      </div>
+      </React.Fragment>
       
   )
 }
