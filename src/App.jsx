@@ -6,6 +6,8 @@ import Test from './Components/Test'
 import Event from './Components/Event'
 import List from './Components/List'
 import DynamicList from './Components/DynmicList'
+import Control from './Components/Contorl'
+import UnControll from './Components/UnControll'
 
 function App() {
   const [list, setList] = useState(["Home", "profile","About", "Contact", "Service"])
@@ -16,7 +18,9 @@ function App() {
         {/* <Test name='Red & White' /> */}
         {/* <Event /> */}
         {/* <List list={list} /> */}
-        <DynamicList list={list} />
+        {/* <DynamicList list={list} /> */}
+        {/* <Control /> */}
+        <UnControll />
       </React.Fragment>
       
   )
