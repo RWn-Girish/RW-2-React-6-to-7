@@ -8,6 +8,7 @@ import List from './Components/List'
 import DynamicList from './Components/DynmicList'
 import Control from './Components/Contorl'
 import UnControll from './Components/UnControll'
+import ValidationForm from './Components/Validation/ValidationForm'
 
 function App() {
   const [list, setList] = useState(["Home", "profile","About", "Contact", "Service"])
@@ -20,7 +21,8 @@ function App() {
         {/* <List list={list} /> */}
         {/* <DynamicList list={list} /> */}
         {/* <Control /> */}
-        <UnControll />
+        {/* <UnControll /> */}
+        <ValidationForm />
       </React.Fragment>
       
   )
