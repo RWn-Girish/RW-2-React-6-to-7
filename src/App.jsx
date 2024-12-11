@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -8,10 +8,22 @@ import List from './Components/List'
 import DynamicList from './Components/DynmicList'
 import Control from './Components/Contorl'
 import UnControll from './Components/UnControll'
-import ValidationForm from './Components/Validation/ValidationForm'
+import ValidationForm from './Components/Validation/ValidationForm';
+import HOC from './Components/HOC'
+
+const HocComp = HOC(ValidationForm)
+const HocTest = HOC(Test)
 
 function App() {
-  const [list, setList] = useState(["Home", "profile","About", "Contact", "Service"])
+  const [list, setList] = useState(["Home", "profile","About", "Contact", "Service"]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(()=> {
+    setTimeout(()=> {
+      setIsLoading(true);
+    }, 5000);
+    
+  }, [])
 
   return (
       <React.Fragment>
@@ -22,7 +34,8 @@ function App() {
         {/* <DynamicList list={list} /> */}
         {/* <Control /> */}
         {/* <UnControll /> */}
-        <ValidationForm />
+    <HocTest isLoading={isLoading} />
+        {/* <HocComp isLoading={isLoading} user={"Hello"}  /> */}
       </React.Fragment>
       
   )
