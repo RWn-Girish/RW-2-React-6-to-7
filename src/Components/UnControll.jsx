@@ -1,7 +1,9 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router";
 
 
 const UnControll = () => {
+    const navigate = useNavigate();
     const fname = useRef();
     const emailRef = useRef();
 
@@ -13,6 +15,7 @@ const UnControll = () => {
     return (
         <>
             <h3>UnControll Component</h3>
+            <button onClick={()=>navigate(`/contact/${fname.current.value}`)}>Contact</button>
             <form onSubmit={handelSubmit}>
             <table border={1}>
                 <tr>

@@ -42,7 +42,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Test name='Red & White' />} />
         <Route path="/about" element={<UnControll />} />
-        <Route path="/contact" element={<Control />} />
+        <Route path="/contact/:name" element={<Control />} />
         <Route path="/*" element={<h2>Not Found</h2>} />
       </Routes>
       <div>

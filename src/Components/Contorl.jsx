@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useParams } from "react-router";
 
 const Control = () => {
+    const {name} = useParams()
+
     const [fname, setFname] = useState("");
     const [email, setEmail] = useState("");
 
@@ -20,7 +23,7 @@ const Control = () => {
 
     return (
         <>
-        <h2>Controll Component</h2>
+        <h2>Controll Component {name}</h2>
         <form onSubmit={handelSubmit}>
             <table border={1}>
                 <tr>
