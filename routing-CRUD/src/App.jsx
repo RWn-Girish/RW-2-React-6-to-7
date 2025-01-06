@@ -5,6 +5,7 @@ import Home from './Componets/Home'
 import AddEmp from './Componets/AddEmp'
 import Header from './Componets/Header'
 import EditEmp from './Componets/EditEmp'
+import UseCallback from './Componets/UseCallback/UseCallback'
 
 function App() {
   
@@ -13,7 +14,8 @@ function App() {
     <>
     <Header />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<UseCallback />} />
+        <Route path='/home' element={<Home />} />
         <Route path='/add' element={<AddEmp />} />
         <Route path='/edit/:id' element={<EditEmp />} />
       </Routes>
