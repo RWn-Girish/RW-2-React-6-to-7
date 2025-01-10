@@ -8,7 +8,7 @@ import EditEmp from './Componets/EditEmp'
 import UseCallback from './Componets/UseCallback/UseCallback'
 import CompA from './Componets/UseContex/CompA'
 import { createContext } from 'react'
-
+import Counter from './Componets/UseReducer/Counter'
 export const UserContex = createContext(null)
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
     <Header />
     <UserContex.Provider value={user} >
       <Routes>
-        <Route path='/' element={<CompA />} />
+        <Route path='/' element={<Counter />} />
         <Route path='/useCallback' element={<UseCallback />} />
         <Route path='/home' element={<Home />} />
         <Route path='/add' element={<AddEmp />} />
