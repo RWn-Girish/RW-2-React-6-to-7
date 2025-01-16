@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./Components/Home";
 import AddBook from "./Components/AddBook";
 import Header from "./Components/Header";
+import EditBook from "./Components/EditBook";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/add" element={<AddBook />} />
+        <Route path="/edit/:id" element={<EditBook />} />
       </Routes>
     </>
   );
