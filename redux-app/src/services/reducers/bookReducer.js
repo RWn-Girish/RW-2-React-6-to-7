@@ -1,10 +1,16 @@
 const initalState = {
     books: JSON.parse(localStorage.getItem('books')) || [],
     book: null,
+    isLoading: false
 }
 
 export const bookReducer = (state = initalState, action) => {
     switch (action.type) {
+        case "LOADING" : 
+        return{
+            ...state,
+            isLoading: true
+        }
         case "ADD_NEW_BOOK":
             let oldData = JSON.parse(localStorage.getItem('books')) || [];
             oldData.push(action.payload);
@@ -18,7 +24,8 @@ export const bookReducer = (state = initalState, action) => {
             let getAllBooks = JSON.parse(localStorage.getItem('books')) || [];
             return {
                 ...state,
-                books: getAllBooks
+                books: getAllBooks,
+                isLoading: false
             }
         
         case "DELETE_BOOK" : 

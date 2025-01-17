@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteBook, getAllBooks } from "../services/actions/book.action";
+import { deleteBook, getAllBooks, getAllBooksAsync } from "../services/actions/book.action";
 import { useNavigate } from "react-router";
 
 function Home() {
-  const { books } = useSelector((state) => state.bookReducer);
+  const { books, isLoading } = useSelector((state) => state.bookReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -16,11 +16,11 @@ function Home() {
   };
 
   useEffect(() => {
-    dispatch(getAllBooks());
+    dispatch(getAllBooksAsync());
   }, []);
   return (
     <div>
-      {books.length == 0 ? (
+      {isLoading ? <h2>Loading....</h2> : books.length == 0 ? (
         <h4>Data Not Found</h4>
       ) : (
         <table>

@@ -32,3 +32,19 @@ export const updateBook = (data) => {
         payload: data
     }
 }
+
+export const loading = () => {
+    return {
+        type: "LOADING"
+    }
+}
+
+
+export const getAllBooksAsync = () => {
+    return (dispatch)=> {
+        dispatch(loading())
+        setTimeout(()=> {
+            dispatch(getAllBooks())
+        }, 3000)
+    }
+}
