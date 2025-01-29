@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import { addDoc, collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, setDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../../config/firebaseConfig';
 export const addNewBook = () => {
     return {
@@ -94,28 +94,26 @@ export const singleBookAsync = (id) => {
 
 
 export const deleteBookAsync = (id) => {
-    return (dispatch) => {
-        axios.delete(`http://localhost:5100/books/${id}`)
-        .then((res)=> {
-            // console.log(res);
+    return async (dispatch) => {
+        try {
+            let record = await deleteDoc(doc(db, "books", `${id}`))
             dispatch(getAllBooksAsync())
-        }).catch((err)=> {
-            // console.log(err);
-            dispatch(addBookRej(err.message))
-        })
+        } catch (error) {
+            console.log(err);
+        }
     }
 }
 
 
 export const updateBookAsync = (data) => {
-    return (dispatch) => {
-        axios.put(`http://localhost:5100/books/${data.id}`, data)
-        .then((res)=> {
-            // console.log(res);
+    return async (dispatch) => {
+       
+        try {
+            await updateDoc(doc(db, 'books', `${data.id}`), data);
             dispatch(updateBook())
-        }).catch((err)=> {
-            // console.log(err);
-            dispatch(addBookRej(err.message))
-        })
+        } catch (error) {
+            console.log(error);
+        }
+
     }
 }
