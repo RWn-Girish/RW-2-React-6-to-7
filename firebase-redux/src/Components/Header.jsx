@@ -9,9 +9,8 @@ function Header() {
           <Container>
             <Navbar.Brand href="/">Navbar with text</Navbar.Brand>
             <Navbar.Toggle />
-            <Navbar.Collapse className="justify-content-end">
               <Nav.Link href="/add">Add Book</Nav.Link>
-            </Navbar.Collapse>
+              {/* <Nav.Link href="/signin">Login</Nav.Link> */}
           </Container>
         </Navbar>
       </Container>
