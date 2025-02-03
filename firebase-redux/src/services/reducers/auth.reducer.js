@@ -17,6 +17,23 @@ export const authReducer = (state = initialState, action) => {
                 ...state,
                 error: action.payload
             }
+        case "LOGIN_FAIL" : 
+            return {
+                ...state,
+                error: action.payload
+            }
+        case "LOGIN_SUC" : 
+        
+            return {
+                ...state,
+                user: action.payload
+            }
+        case "LOGOUT_SUC" : 
+
+            return {
+                ...state,
+                user: null
+            }
     
         default:
             return state;

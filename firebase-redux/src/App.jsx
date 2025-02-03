@@ -5,6 +5,7 @@ import AddBook from "./Components/AddBook";
 import Header from "./Components/Header";
 import EditBook from "./Components/EditBook";
 import Register from "./Components/Auth/Register";
+import Login from "./Components/Auth/Login";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
     <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />
         <Route path="/add" element={<AddBook />} />
         <Route path="/edit/:id" element={<EditBook />} />

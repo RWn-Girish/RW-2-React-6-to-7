@@ -4,6 +4,7 @@ import { deleteBookAsync, getAllBooks, getAllBooksAsync } from "../services/acti
 import { useNavigate } from "react-router";
 
 function Home() {
+  const { user } = useSelector(state => state.authReducer);
   const { books, isLoading } = useSelector((state) => state.bookReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -18,9 +19,16 @@ function Home() {
   useEffect(() => {
     dispatch(getAllBooksAsync());
   }, []);
+  useEffect(()=> {
+    if(!user){
+      navigate("/login");
+    }
+  }, []);
   return (
     <div>
-      {isLoading ? <h2>Loading....</h2> : books.length == 0 ? (
+      {
+      !user ? "" :
+      isLoading ? <h2>Loading....</h2> : books.length == 0 ? (
         <h4>Data Not Found</h4>
       ) : (
         <table>

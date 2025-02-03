@@ -1,7 +1,14 @@
 import React from "react";
-import { Container, Navbar, Nav } from "react-bootstrap";
+import { Container, Navbar, Nav, Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { logOutAsync } from "../services/actions/auth.action";
 
 function Header() {
+  const dispatch = useDispatch();
+  const { user } = useSelector(state => state.authReducer);
+  const handleLogOut = () => {
+    dispatch(logOutAsync());
+  }
   return (
     <>
       <Container>
@@ -9,8 +16,8 @@ function Header() {
           <Container>
             <Navbar.Brand href="/">Navbar with text</Navbar.Brand>
             <Navbar.Toggle />
-              <Nav.Link href="/add">Add Book</Nav.Link>
-              {/* <Nav.Link href="/signin">Login</Nav.Link> */}
+              {user ? <Nav.Link href="/add">Add Book</Nav.Link> : ""}
+              {!user ? <Nav.Link href="/login">Login</Nav.Link> : <Button onClick={handleLogOut}>LogOut</Button> }
           </Container>
         </Navbar>
       </Container>
