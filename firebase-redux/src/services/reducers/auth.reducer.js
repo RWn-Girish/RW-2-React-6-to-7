@@ -1,7 +1,7 @@
 const initialState = {
     isCreated: false,
     error: null,
-    user: null
+    user: JSON.parse(sessionStorage.getItem('user')) || null
 }
 
 
@@ -23,13 +23,13 @@ export const authReducer = (state = initialState, action) => {
                 error: action.payload
             }
         case "LOGIN_SUC" : 
-        
+            sessionStorage.setItem("user", JSON.stringify(action.payload))
             return {
                 ...state,
                 user: action.payload
             }
         case "LOGOUT_SUC" : 
-
+        sessionStorage.removeItem("user")
             return {
                 ...state,
                 user: null

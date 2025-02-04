@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteBookAsync, getAllBooks, getAllBooksAsync } from "../services/actions/book.action";
 import { useNavigate } from "react-router";
+import Login from "./Auth/Login";
 
 function Home() {
   const { user } = useSelector(state => state.authReducer);
@@ -27,7 +28,7 @@ function Home() {
   return (
     <div>
       {
-      !user ? "" :
+      !user ? <Login /> :
       isLoading ? <h2>Loading....</h2> : books.length == 0 ? (
         <h4>Data Not Found</h4>
       ) : (

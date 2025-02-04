@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewUserAsync, loginUserAsync } from "../../services/actions/auth.action";
+import { addNewUserAsync, googleLoginAsync, loginUserAsync } from "../../services/actions/auth.action";
 import { Link, useNavigate } from "react-router";
 
 const Login = () => {
@@ -24,6 +24,10 @@ const Login = () => {
     const handelSubmit = (e) => {
         e.preventDefault();
             dispatch(loginUserAsync(inputForm));
+    }
+
+    const handleGoogleLogin = () => {
+        dispatch(googleLoginAsync())
     }
 
     useEffect(() => {
@@ -73,6 +77,7 @@ const Login = () => {
             </Col>
           </Form.Group>
         </Form>
+        <Button onClick={handleGoogleLogin}>Google Login</Button>
         <p>Create an Account ? <Link to={"/signup"}>SignUp</Link></p>
       </Container>
         
