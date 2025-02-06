@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addBookAsync, addNewBook } from "../services/actions/book.action";
 import generateUniqueId  from "generate-unique-id";
 import { useNavigate } from "react-router";
+import { uploadImage } from "../config/uploadImage";
 
 function AddBook() {
   const {error, isCreated} = useSelector(state => state.bookReducer)
@@ -14,6 +15,7 @@ function AddBook() {
     author: "",
     category: "",
     pages: "",
+    image: ""
   });
 
   const handelChanged = (e) => {
@@ -23,6 +25,17 @@ function AddBook() {
       [name]: value,
     });
   };
+
+  const handleUpload = async (e) => {
+    // console.log(e.target.files[0]);
+
+    let imageUrl = await uploadImage(e.target.files[0])
+    console.log(imageUrl);
+    setBookInput({
+      ...bookInput,
+      image: `${imageUrl}`,
+    });
+  }
 
   const handelSubmit = (e) => {
     e.preventDefault();
@@ -97,6 +110,18 @@ function AddBook() {
                 name="pages"
                 value={bookInput.pages}
                 onChange={handelChanged}
+              />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3">
+            <Form.Label column sm="2">
+              Upload Image
+            </Form.Label>
+            <Col sm="10">
+              <Form.Control
+                type="file"
+                name="image"
+                onChange={handleUpload}
               />
             </Col>
           </Form.Group>
